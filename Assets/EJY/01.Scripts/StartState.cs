@@ -20,6 +20,7 @@ public class StartState : MonoBehaviour
         OnClickEvent += HandleStartEvent;
 
         heartUI.SetActive(false);
+        heartUI.transform.localScale = Vector3.zero;
 
         cam = Camera.main;
         cam.orthographicSize = 3;
@@ -38,6 +39,9 @@ public class StartState : MonoBehaviour
     private void HandleStartEvent()
     {
         StopAllCoroutines();
+
+        heartUI.SetActive(true);
+        heartUI.transform.DOScale(Vector3.one, 3.5f);
 
         _vannerText.DOFade(0, 1.5f);
         _startToPressText.DOFade(0, 1.5f);
