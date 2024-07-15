@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 683660278}
   - component: {fileID: 683660277}
   m_Layer: 5
-  m_Name: StartBanerText
+  m_Name: StartVannerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1419,6 +1419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartUI: {fileID: 1332071677}
   _startToPressText: {fileID: 1866505344}
+  _vannerText: {fileID: 683660277}
 --- !u!1 &1300447148
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,19 +1,24 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Events;
 using TMPro;
 using System.Collections;
+using System;
 
 public class StartState : MonoBehaviour
 {
     private Camera cam;
 
-    [SerializeField] private GameObject heartUI;
+    private event Action OnClickEvent;
 
-    
+    [SerializeField] private GameObject heartUI;
+    [SerializeField] private TextMeshProUGUI _startToPressText;
+    [SerializeField] private TextMeshProUGUI _vannerText;
+
 
     private void Start()
     {
+        OnClickEvent += HandleStartEvent;
+
         heartUI.SetActive(false);
 
         cam = Camera.main;
@@ -22,8 +27,27 @@ public class StartState : MonoBehaviour
         
         StartCoroutine(TextBlinkCoroutine());
     }
+    private void Update()
+    {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            OnClickEvent?.Invoke();
+        }
+    }
 
-    [SerializeField] private TextMeshProUGUI _startToPressText;
+    private void HandleStartEvent()
+    {
+        StopAllCoroutines();
+
+        _vannerText.DOFade(0, 1.5f);
+        _startToPressText.DOFade(0, 1.5f);
+
+        cam.DOOrthoSize(5, 3.5f);
+        cam.transform.DOMove(new Vector3(0,0,-10),3.5f);
+
+        OnClickEvent -= HandleStartEvent;
+    }
+
 
     private IEnumerator TextBlinkCoroutine()
     {
