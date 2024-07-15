@@ -32,7 +32,7 @@ public class PlayerHit : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         _spriterenderer.color = new Color(1, 1, 1, 1);
 
-        for (int i = 0; i< 6; i++)
+        for (int i = 0; i< 3; i++)
         {
             yield return new WaitForSeconds(0.2f);
             _spriterenderer.color = new Color(1, 1, 1, 0.4f);

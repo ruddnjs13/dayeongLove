@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 747def8dd9a71804c981bd7978236a7f
+guid: e4a04453cb67fa0408502dc0bc77c726
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sand Mud Ice (16x6)_0
+      name: Free Smoke Fx  Pixel 05_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 48
-        height: 48
+        x: 194
+        y: 274
+        width: 57
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2aad92d850e91ad4398682f4ea157686
-      internalID: -1457459186
+      spriteID: 5300c9001c57f6646a183b40f36d3fca
+      internalID: 350595233
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sand Mud Ice (16x6)_0: -1457459186
+      Free Smoke Fx  Pixel 05_0: 350595233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

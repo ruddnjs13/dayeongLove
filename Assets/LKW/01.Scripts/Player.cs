@@ -16,10 +16,12 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _boxTrm;
     [SerializeField] private Vector2 _boxSize;
     [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private GameObject _airEffect;
 
     private int _isGroundHash = Animator.StringToHash("IsGround");
     private int _yVelocityHash = Animator.StringToHash("YVelocity");
     public bool IsGround { get; private set; }
+    private bool _canDoubleJump = false;
 
     public int PlayerHP { get; private set; } = 5;
 
@@ -43,10 +45,27 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsGround)
+        if (Input.GetKeyDown(KeyCode.Space) && _canDoubleJump)
+        {
+            _rigidbody2D.velocity = Vector3.zero;
+            _rigidbody2D.AddForce(Vector2.up * jumpPower * 1.1f, ForceMode2D.Impulse);
+            StartCoroutine(AirEffectCoroutine());
+            _canDoubleJump = false;
+            return;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && IsGround)
         {
             _rigidbody2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            _canDoubleJump = true;
+            return;
         }
+    }
+
+    private IEnumerator AirEffectCoroutine()
+    {
+        _airEffect.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        _airEffect.SetActive(false);
     }
 
     private void CheckGround()
