@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start   To Press
+  m_text: Start To Press
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9326e63c36f59b3438f8409a9313986e, type: 2}
   m_sharedMaterial: {fileID: 2621658335151532547, guid: 9326e63c36f59b3438f8409a9313986e, type: 2}
