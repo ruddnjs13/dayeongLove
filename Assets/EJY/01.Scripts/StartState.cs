@@ -11,6 +11,8 @@ public class StartState : MonoBehaviour
     private event Action OnClickEvent;
 
     [SerializeField] private GameObject heartUI;
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject escUI;
     [SerializeField] private TextMeshProUGUI _startToPressText;
     [SerializeField] private TextMeshProUGUI _vannerText;
 
@@ -18,6 +20,9 @@ public class StartState : MonoBehaviour
     private void Start()
     {
         OnClickEvent += HandleStartEvent;
+
+        gameOverUI.SetActive(false);
+        escUI.SetActive(false);
 
         heartUI.SetActive(false);
         heartUI.transform.localScale = Vector3.zero;
@@ -33,6 +38,11 @@ public class StartState : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             OnClickEvent?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
         }
     }
 

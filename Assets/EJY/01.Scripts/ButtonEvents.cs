@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class ButtonEvents : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject escUI;
+    public void OnRetry()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1.0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnExit()
     {
-        
+        Application.Quit();
+    }
+
+    public void OnPlay()
+    {
+        escUI.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 }
