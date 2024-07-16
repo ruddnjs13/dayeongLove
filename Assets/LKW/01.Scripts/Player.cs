@@ -90,13 +90,13 @@ public class Player : MonoBehaviour
 
     private void TakeDamage()
     {
+        PlayerHP--;
         OnHitEvent?.Invoke();
         if (PlayerHP <= 0)
         {
             DeadEvent?.Invoke();
             return;
         }
-        PlayerHP--;
 
     }
 

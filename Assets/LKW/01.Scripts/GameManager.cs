@@ -5,13 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _obstacleSpawnManager;
+    [SerializeField] private GameObject gameOverUI;
     void Start()
     {
         _obstacleSpawnManager.SetActive(false);
     }
 
-    void Update()
+    public void GameOver()
     {
-        
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0;
     }
+
+
 }

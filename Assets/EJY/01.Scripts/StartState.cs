@@ -16,6 +16,8 @@ public class StartState : MonoBehaviour
     [SerializeField] private GameObject escUI;
     [SerializeField] private TextMeshProUGUI _startToPressText;
     [SerializeField] private TextMeshProUGUI _vannerText;
+    [SerializeField] private GameObject _obstacleSpawnManager;
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
 
     private void Start()
@@ -27,6 +29,8 @@ public class StartState : MonoBehaviour
 
         heartUI.SetActive(false);
         heartUI.transform.localScale = Vector3.zero;
+        _scoreText.gameObject.SetActive(false);
+        _scoreText.gameObject.transform.localScale = Vector3.zero;
 
         cam = Camera.main;
         cam.orthographicSize = 3;
@@ -71,6 +75,11 @@ public class StartState : MonoBehaviour
         StopAllCoroutines();
 
         OnEscEvent += HandleEscEvent;
+
+        _obstacleSpawnManager.SetActive(true);
+
+        _scoreText.gameObject.SetActive(true);
+        _scoreText.gameObject.transform.DOScale(Vector3.one, 3.5f);
 
         heartUI.SetActive(true);
         heartUI.transform.DOScale(Vector3.one, 3.5f);
