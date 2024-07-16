@@ -9,7 +9,6 @@ public class ScoreZone : MonoBehaviour
     private float curretScore = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("ºÎµó");
         if (collision.CompareTag("Obstacle"))
         {
             curretScore++;

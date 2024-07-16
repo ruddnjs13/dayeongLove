@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private GameObject _obstacleSpawnManager;
     void Start()
     {
-        
+        _obstacleSpawnManager.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
