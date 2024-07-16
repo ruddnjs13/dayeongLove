@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class ObstacleManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] Obstacles;
+    [SerializeField] private GameObject[] DoubleObstacles;
     [SerializeField] private Transform SpawnPos;
 
     private void Start()
@@ -19,9 +20,18 @@ public class ObstacleManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(4f);
-            GameObject obstacle =  Obstacles[Random.Range(0, 3)];
-            obstacle.transform.position = SpawnPos.position;
+            if (Random.Range(0,3) == 0)
+            {
+                GameObject Doubleobstacle = DoubleObstacles[Random.Range(0, 3)];
+                Doubleobstacle.transform.position = SpawnPos.position;
+               
+            }
+            else
+            {
+                GameObject obstacle = Obstacles[Random.Range(0, 3)];
+                obstacle.transform.position = SpawnPos.position;
+            }
+            yield return new WaitForSeconds(4.8f);
         }
     }
 }
