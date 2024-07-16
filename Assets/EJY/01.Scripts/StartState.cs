@@ -9,21 +9,24 @@ public class StartState : MonoBehaviour
     private Camera cam;
 
     private event Action OnClickEvent;
+    private event Action OnEscEvent;
 
     [SerializeField] private GameObject heartUI;
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject escUI;
     [SerializeField] private TextMeshProUGUI _startToPressText;
     [SerializeField] private TextMeshProUGUI _vannerText;
-    [SerializeField] private GameObject _obstacleSpawnManager;
-    [SerializeField] private TextMeshProUGUI _scoreText;
 
 
     private void Start()
     {
         OnClickEvent += HandleStartEvent;
+        
+        gameOverUI.SetActive(false);
+        escUI.SetActive(false);
 
         heartUI.SetActive(false);
         heartUI.transform.localScale = Vector3.zero;
-        _scoreText.gameObject.transform.localScale = Vector3.zero;
 
         cam = Camera.main;
         cam.orthographicSize = 3;
@@ -31,11 +34,35 @@ public class StartState : MonoBehaviour
         
         StartCoroutine(TextBlinkCoroutine());
     }
+
+    private void HandleEscEvent()
+    {
+        if (escUI.activeSelf == true)
+        {
+
+            escUI.SetActive(false);
+
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            escUI.SetActive(true);
+
+            Time.timeScale = 0;
+        }
+
+    }
+
     private void Update()
     {
         if(Input.GetButtonDown("Fire1"))
         {
             OnClickEvent?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnEscEvent?.Invoke();
         }
     }
 
@@ -43,10 +70,7 @@ public class StartState : MonoBehaviour
     {
         StopAllCoroutines();
 
-        _obstacleSpawnManager.SetActive(true);
-
-        _scoreText.gameObject.SetActive(true);
-        _scoreText.gameObject.transform.DOScale(Vector3.one, 3.5f);
+        OnEscEvent += HandleEscEvent;
 
         heartUI.SetActive(true);
         heartUI.transform.DOScale(Vector3.one, 3.5f);
@@ -60,7 +84,11 @@ public class StartState : MonoBehaviour
         OnClickEvent -= HandleStartEvent;
     }
 
-
+    private void OnDisable()
+    {
+        OnClickEvent += HandleEscEvent;
+        OnEscEvent -= HandleEscEvent;
+    }
     private IEnumerator TextBlinkCoroutine()
     {
         _startToPressText.DOFade(0, 0.5f);
