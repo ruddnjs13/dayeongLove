@@ -18,7 +18,11 @@ public class ButtonEvents : MonoBehaviour
 
     public void OnPlay()
     {
-        escUI.SetActive(false);
-        Time.timeScale = 1.0f;
+        Debug.Log(1);
+        if (escUI.activeSelf == true)
+        {
+            escUI.SetActive(false);
+            Time.timeScale = 1.0f;
+        }        
     }
 }
